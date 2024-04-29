@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class UI_InventorySlot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject ItemImage_Image;
+
+    private void Start()
     {
-        
+        ItemImage_Image.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+
     }
 }
