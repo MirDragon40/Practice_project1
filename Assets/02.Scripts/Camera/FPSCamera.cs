@@ -36,6 +36,8 @@ public class FPSCamera : MonoBehaviour
         // 마우스를 고정시키는 코드
         Cursor.lockState = CursorLockMode.Locked;
 
+        // 카메라가 아래로 쳐박히지 않도록
+        transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     private void LateUpdate()
@@ -54,9 +56,7 @@ public class FPSCamera : MonoBehaviour
         // 1. 마우스를 입력(Drag) 받는다.
         float mouseX = Input.GetAxis("Mouse X");  // 방향에 따라 -1 ~ 1 사이의 값 변환
         float mouseY = Input.GetAxis("Mouse Y");
-        //Debug.Log(message: $"GetAxis: {mouseX} {mouseY}");
-        //Vector2 mousePosition = Input.mousePosition;  // 진짜 마우스 좌표값
-        //Debug.Log(message: $"mousePosition: {mousePosition.x}, {mousePosition.y}");
+
 
         // 2. 마우스 입력 값을 이용해 회전 방향을 구한다. 
         Vector3 rotationDir = new Vector3(mouseX, mouseY, z: 0);
@@ -80,7 +80,7 @@ public class FPSCamera : MonoBehaviour
         //rotation.y = Mathf.Clamp(value: rotation.y, min: -200f, max:200f);
         //transform.eulerAngles = rotation;
 
-        _my = Mathf.Clamp(value: _my, min: -90f, max: 90f);
+        _my = Mathf.Clamp(value: _my, min: -70f, max: 90f);
 
 
         transform.eulerAngles = new Vector3(x: -_my, y: _mx, z: 0);
