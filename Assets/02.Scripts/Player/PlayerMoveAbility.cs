@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveAbility : MonoBehaviour
+public class PlayerMoveAbility : PlayerAbility
 {
     private float _gravity = -9.8f;  // 중력 변수
     private float _yVelocity = 0f;
 
     private CharacterController _characterController;
 
-    private void Awake()
+    private void Start()
     {
         _characterController = GetComponent<CharacterController>();
+
     }
 
     private void Update()
@@ -25,6 +26,20 @@ public class PlayerMoveAbility : MonoBehaviour
 
         _yVelocity += _gravity * Time.deltaTime;
         dir.y = _yVelocity;
+
+        float moveSpeed = _owner.Stat.MoveSpeed;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveSpeed = _owner.Stat.RunSpeed;
+        }
+
+        _characterController.Move(dir * (moveSpeed * Time.deltaTime));
+
+        if (_characterController.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            _yVelocity = _owner.Stat.JumpPower;
+        }
 
 
 
