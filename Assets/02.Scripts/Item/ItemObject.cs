@@ -1,8 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-   
+    public TextMeshProUGUI GetItem_text;
+
+    private void Awake()
+    {
+        Collider col = GetComponentInChildren<Collider>();
+    }
+
+    private void Start()
+    {
+        GetItem_text.gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (CompareTag("Player"))
+        {
+            GetItem_text.gameObject.SetActive(true);
+            GetItem_text.text = "아이템 줍기: [E]";
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        GetItem_text.gameObject.SetActive(false);
+    }
 }
