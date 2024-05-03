@@ -34,6 +34,11 @@ public class ItemObject : MonoBehaviour
     {
         Debug.Log("아이템이 플레이어에게 닿아있다.");
 
+        if (CompareTag("Player"))
+        {
+
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
