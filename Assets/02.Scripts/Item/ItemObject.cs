@@ -24,16 +24,22 @@ public class ItemObject : MonoBehaviour
             GetItem_text.gameObject.SetActive(true);
             GetItem_text.text = "아이템 줍기: [E]";
 
+            Debug.Log("아이템이 플레이어에게 닿았다.");
+
+
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        
+        Debug.Log("아이템이 플레이어에게 닿아있다.");
+
     }
 
     private void OnTriggerExit(Collider other)
     {
         GetItem_text.gameObject.SetActive(false);
+        Debug.Log("아이템이 플레이어에게서 떨어졌다.");
+
     }
 }
