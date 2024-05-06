@@ -9,7 +9,6 @@ public class ItemObject : MonoBehaviour
 
     private void Awake()
     {
-        Collider col = GetComponentInChildren<Collider>();
     }
 
     private void Start()
@@ -19,12 +18,13 @@ public class ItemObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             GetItem_text.gameObject.SetActive(true);
             GetItem_text.text = "아이템 줍기: [E]";
 
             Debug.Log("아이템이 플레이어에게 닿았다.");
+
 
 
         }
@@ -34,9 +34,14 @@ public class ItemObject : MonoBehaviour
     {
         Debug.Log("아이템이 플레이어에게 닿아있다.");
 
-        if (CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GetItem_text.gameObject.SetActive(false);
+                
 
+            }
         }
 
     }
